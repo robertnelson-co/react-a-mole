@@ -1,36 +1,35 @@
+import './App.css';
 import { useState } from 'react'
-import MoleContainer from '../public/assets/molehill.png'
-import Mole from '../public/assets/mole.png'
+import MoleContainer from './components/MoleContainer'
 
 function App(){
-  let [score, setScore] = useState(0)
+    let [score, setScore] = useState(0)
 
-  const createMoleHill = () => {
-    let hills = []
-    for (let i = 0; i < 9; i++) {
-      hills.push(
-        <MoleContainer
-        key= 
-        setScore = {setScore}
-        score={score} />
-      )
+    const createMoleHill = () => {
+        let hills = []
+        for (let i = 0; i < 9; i++) {
+            hills.push(
+                <MoleContainer
+                key={i}
+                setScore={setScore}
+                score={score} />
+            )
+        }
+
+        return (
+            <div>
+                {hills}
+            </div>
+        )
     }
 
     return (
-      <div>
-        {hills}
-      </div>
+        <div className="App">
+            <h1>React-a-Mole!</h1>
+            Score: {score}
+            {createMoleHill()}
+        </div>
     )
-  }
-
-  return (
-    <div className="App">
-      <h1>React-a-Mole!</h1>
-      {score}
-      {createMoleHill()}
-    </div>
-  )
-
 }
 
-export default App;
+export default App
